@@ -1,5 +1,3 @@
-import React from 'react';
-
 const NoteForm = ({ title, body, setTitle, setBody, addNote }) => {
   return (
     <label>

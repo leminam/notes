@@ -1,13 +1,15 @@
-import React from "react";
+import { useSelector } from "react-redux";
 import NoteItem from "./NoteItem";
 
-const NoteList = ({ notes, removeNote }) => {
+const NoteList = () => {
+  const notes = useSelector((state) => state.notes);
+
   return (
-    <ul>
+    <div>
       {notes.map((note) => (
-        <NoteItem removeNote={removeNote} key={note.id} {...note} />
+        <NoteItem key={note.id} {...note} />
       ))}
-    </ul>
+    </div>
   );
 };
 

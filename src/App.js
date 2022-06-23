@@ -1,35 +1,42 @@
 import { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import "./App.css";
 import NoteForm from "./components/NoteForm";
 import NoteList from "./components/NoteList";
 
 function App() {
-  const notes = useSelector((state) => state.notes);
-
   const dispatch = useDispatch();
 
-  const addNote = (title) => {
+  const addNote = (title, body) => {
     const note = {
       id: Date.now(),
       title,
+      body,
     };
     dispatch({ type: "ADD_NOTE", payload: note });
   };
 
-  const removeNote = (note) => {
-    dispatch({ type: "DELETE_NOTE", payload: note.id });
+  const [title, setTitle] = useState("");
+  const [body, setBody] = useState("");
+
+  const handleAction = () => {
+    if (title.trim().length) {
+      addNote(title, body);
+      setTitle("");
+      setBody("");
+    }
   };
 
   return (
     <div className="App">
-      <button onClick={() => addNote(prompt())}>добавить</button>
-      {notes.map((note) => (
-        <div>
-          {note.title}
-          <button onClick={() => removeNote(note)}>&times;</button>
-        </div>
-      ))}
+      <NoteForm
+        title={title}
+        body={body}
+        setTitle={setTitle}
+        setBody={setBody}
+        addNote={handleAction}
+      />
+      <NoteList />
     </div>
   );
 }
