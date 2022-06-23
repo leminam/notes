@@ -8,10 +8,14 @@ const NoteItem = ({ id, body, title }) => {
   };
 
   return (
-    <div>
-      <div>{title}</div>
+    <div className="note">
+      <div className="note_title">{title}</div>
       <div>{body}</div>
-      <button onClick={() => deleteNote({id})} style={{ color: "red" }}>
+      <button
+        className="delete_button"
+        onClick={() => deleteNote({ id })}
+        style={{ color: "red" }}
+      >
         &times;
       </button>
     </div>
