@@ -17,15 +17,18 @@ function App() {
     dispatch({ type: "ADD_NOTE", payload: note });
   };
 
-  const removeNote = ({ id }) => {
-    dispatch({ type: "REMOVE_NOTE", payload: id });
+  const removeNote = (note) => {
+    dispatch({ type: "DELETE_NOTE", payload: note.id });
   };
 
   return (
     <div className="App">
-      <button onClick={addNote(prompt())}>добавить</button>
+      <button onClick={() => addNote(prompt())}>добавить</button>
       {notes.map((note) => (
-        <div>{note.title}</div>
+        <div>
+          {note.title}
+          <button onClick={() => removeNote(note)}>&times;</button>
+        </div>
       ))}
     </div>
   );
