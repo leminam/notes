@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import "./App.css";
+import "./styles.sass";
 import NoteForm from "./components/NoteForm";
 import NoteList from "./components/NoteList";
 
@@ -28,7 +28,7 @@ function App() {
   };
 
   return (
-    <div className="App">
+    <div className="app">
       <NoteForm
         title={title}
         body={body}
