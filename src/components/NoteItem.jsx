@@ -14,10 +14,7 @@ const NoteItem = ({ id, body, title }) => {
       <button
         className="delete_button"
         onClick={() => deleteNote({ id })}
-        style={{ color: "red" }}
-      >
-        &times;
-      </button>
+      ></button>
     </div>
   );
 };

@@ -1,25 +1,29 @@
 const NoteForm = ({ title, body, setTitle, setBody, addNote }) => {
   return (
     <div className="form">
-      <div>
-        Заголовок
-        <input
-          placeholder="Укажите заголовок"
-          value={title}
-          onChange={(e) => setTitle(e.target.value)}
-        />
-      </div>
-      <div>
-        Описание
-        <input
-          placeholder="Укажите описание"
-          value={body}
-          onChange={(e) => setBody(e.target.value)}
-        />
-      </div>
-      <button className="create_button" onClick={addNote}>
-        добавить заметку
-      </button>
+      <form>
+        <div>
+          <span>Заголовок</span>
+          <input
+            placeholder="Укажите заголовок"
+            value={title}
+            onChange={(e) => setTitle(e.target.value)}
+            required
+          />
+        </div>
+        <div>
+          <span>Описание</span>
+          <input
+            placeholder="Укажите описание"
+            value={body}
+            onChange={(e) => setBody(e.target.value)}
+            required
+          />
+        </div>
+        <button className="create_button" onClick={addNote}>
+          добавить заметку
+        </button>
+      </form>
     </div>
   );
 };

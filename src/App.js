@@ -19,8 +19,9 @@ function App() {
   const [title, setTitle] = useState("");
   const [body, setBody] = useState("");
 
-  const handleAction = () => {
-    if (title.trim().length) {
+  const handleAction = (e) => {
+    if (title.trim().length & body.trim().length) {
+      e.preventDefault()
       addNote(title, body);
       setTitle("");
       setBody("");
