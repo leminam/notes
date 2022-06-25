@@ -27,6 +27,18 @@ function App() {
     }
   };
 
+  const getNotes = (note) => {
+    dispatch({ type: "GET_NOTES", payload: note });
+  };
+
+  const fetchNotes = () => {
+    return (dispatch) => {
+      fetch("https://jsonplaceholder.typicode.com/posts")
+        .then((response) => response.json())
+        .then((json) => dispatch(getNotes(json)));
+    };
+  };
+
   return (
     <div className="app">
       <NoteForm
@@ -36,6 +48,9 @@ function App() {
         setBody={setBody}
         addNote={handleAction}
       />
+      <button onClick={dispatch(fetchNotes)} className="create_button">
+        загрузить заметки
+      </button>
       <NoteList />
     </div>
   );

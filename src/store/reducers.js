@@ -4,6 +4,8 @@ const defaultState = {
 
 const reducer = (state = defaultState, action) => {
   switch (action.type) {
+    case "GET_NOTES":
+      return { ...state, notes: [...state.notes, ...action.payload] };
     case "ADD_NOTE":
       return { ...state, notes: [...state.notes, action.payload] };
     case "DELETE_NOTE":
