@@ -15,6 +15,7 @@ const NoteItem = ({ id, body, title }) => {
         className="delete_button"
         onClick={() => deleteNote({ id })}
       ></button>
+      <button className="edit_button"></button>
     </div>
   );
 };
